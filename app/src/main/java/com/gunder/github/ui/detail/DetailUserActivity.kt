@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.gunder.github.R
+import com.gunder.github.data.model.DetailUserResponse
 import com.gunder.github.databinding.ActivityDetailUserBinding
 import com.gunder.github.ui.main.UserViewModel
 
@@ -21,6 +22,12 @@ class DetailUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val user: DetailUserResponse? = null
+        supportActionBar?.apply {
+            title = user?.name
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         val bundle = Bundle()
@@ -48,5 +55,10 @@ class DetailUserActivity : AppCompatActivity() {
             viewPager.adapter = sectionPagerAdapter
             tabs.setupWithViewPager(viewPager)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
