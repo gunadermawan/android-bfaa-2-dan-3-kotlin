@@ -11,6 +11,11 @@ import com.gunder.github.databinding.ItemUserBinding
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val listUser = ArrayList<User>()
+    private var onItemClickCallBack: OnItemClickCallBack? = null
+
+    fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack){
+        this.onItemClickCallBack = onItemClickCallBack
+    }
 
     fun setListUser(users: ArrayList<User>) {
         listUser.clear()
@@ -21,6 +26,9 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     inner class UserViewHolder(val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindingUser(user: User) {
+            binding.root.setOnClickListener{
+                onItemClickCallBack?.onItemClicked(user)
+            }
             binding.apply {
                 Glide.with(itemView)
                     .load(user.avatar_url)
@@ -43,5 +51,9 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     override fun getItemCount(): Int = listUser.size
+
+    interface OnItemClickCallBack{
+        fun onItemClicked(data: User)
+    }
 
 }

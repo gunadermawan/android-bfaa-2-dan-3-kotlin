@@ -1,5 +1,6 @@
 package com.gunder.github.ui.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -7,7 +8,9 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunder.github.R
+import com.gunder.github.data.model.User
 import com.gunder.github.databinding.ActivityMainBinding
+import com.gunder.github.ui.detail.DetailUserActivity
 
 class MainActivity : AppCompatActivity() {
     //    binding
@@ -26,6 +29,16 @@ class MainActivity : AppCompatActivity() {
 
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
+        adapter.setOnItemClickCallBack(object : UserAdapter.OnItemClickCallBack{
+            override fun onItemClicked(data: User) {
+                Intent(this@MainActivity, DetailUserActivity::class.java).also {
+                    it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
+                    startActivity(it)
+                }
+            }
+
+        })
+
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
