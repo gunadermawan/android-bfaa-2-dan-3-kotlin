@@ -32,7 +32,7 @@ class DetailUserActivity : AppCompatActivity() {
             if (it != null){
                 binding.apply {
                     tvName.text = it.name
-                    tvUsername.text = it.login
+                    tvUsername.text = "@${it.login}"
                     tvFollowers.text = "${it.followers} followers"
                     tvFollowing.text = "${it.following} following"
                     Glide.with(this@DetailUserActivity)
