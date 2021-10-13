@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.gunder.github.data.model.User
 import com.gunder.github.databinding.ItemUserBinding
 
@@ -21,11 +22,11 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bindingUser(user: User) {
             binding.apply {
-            Glide.with(itemView)
-                .load(user.avatarUrl)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .centerCrop()
-                .into(ivUser)
+                Glide.with(itemView)
+                    .load(user.avatar_url)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .centerCrop()
+                    .into(ivUser)
                 tvUsername.text = user.login
             }
 
@@ -34,7 +35,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val viewUser = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return UserViewHolder(viewUser)
+        return UserViewHolder((viewUser))
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {

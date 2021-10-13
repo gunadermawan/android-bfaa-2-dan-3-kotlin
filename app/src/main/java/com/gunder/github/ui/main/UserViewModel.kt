@@ -10,29 +10,30 @@ import com.gunder.github.data.model.UserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Query
 
-class UserViewModel: ViewModel() {
+class UserViewModel : ViewModel() {
     val listUserViewModel = MutableLiveData<ArrayList<User>>()
-    fun setSearch(query: String){
+    fun setSearch(query: String) {
         RetrofitClient.apiInstance
-            .getSetUsers(query)
-            .enqueue(object : Callback<UserResponse>{
+            .getSearchUsers(query)
+            .enqueue(object : Callback<UserResponse> {
                 override fun onResponse(
                     call: Call<UserResponse>,
                     response: Response<UserResponse>
                 ) {
-                    if (response.isSuccessful){
+                    if(response.isSuccessful){
                         listUserViewModel.postValue(response.body()?.items)
                     }
                 }
 
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    Log.d("Fail", t.message!!)
+                    Log.d("fail", t.message!!)
                 }
+
             })
     }
-    fun getSearch(): LiveData<ArrayList<User>>{
+
+    fun getSearch(): LiveData<ArrayList<User>> {
         return listUserViewModel
     }
 }

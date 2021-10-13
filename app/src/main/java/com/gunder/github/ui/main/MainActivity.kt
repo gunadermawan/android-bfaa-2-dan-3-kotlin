@@ -10,8 +10,13 @@ import com.gunder.github.R
 import com.gunder.github.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    //    binding
     private lateinit var binding: ActivityMainBinding
+
+    //    viewModel
     private lateinit var viewModel: UserViewModel
+
+    //    adapter recycelerView
     private lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,17 +26,22 @@ class MainActivity : AppCompatActivity() {
 
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(UserViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(UserViewModel::class.java)
+//        set recycelerView
         binding.apply {
             rvUser.layoutManager = LinearLayoutManager(this@MainActivity)
             rvUser.setHasFixedSize(true)
             rvUser.adapter = adapter
-
-            btnSearch.setOnClickListener{
+//      btnListener
+            btnSearch.setOnClickListener {
                 searchUser()
             }
+//            tbl enter di keybaord
             etQuery.setOnKeyListener { v, keyCode, event ->
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     searchUser()
                     return@setOnKeyListener true
                 }
@@ -39,22 +49,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
         viewModel.getSearch().observe(this, {
-            if (it != null){
+            if (it != null) {
                 adapter.setListUser(it)
                 showLoading(false)
             }
         })
     }
-//    progressbar
-    private fun showLoading(state: Boolean){
-        if (state){
+
+    //    progressbar
+    private fun showLoading(state: Boolean) {
+        if (state) {
             binding.progressbar.visibility = View.VISIBLE
-        } else{
+        } else {
             binding.progressbar.visibility = View.GONE
         }
     }
-//    search user
-    private fun searchUser(){
+
+    //    search user
+    private fun searchUser() {
         binding.apply {
             val query = etQuery.text.toString()
             if (query.isEmpty()) return
