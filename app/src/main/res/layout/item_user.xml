@@ -27,7 +27,7 @@
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            card_view:civ_border_color="#F34573"
+            card_view:civ_border_color="#385170"
             card_view:civ_border_width="2dp"
             tools:src="@tools:sample/avatars" />
 
