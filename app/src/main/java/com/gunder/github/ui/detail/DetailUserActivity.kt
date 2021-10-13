@@ -22,10 +22,8 @@ class DetailUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val user: DetailUserResponse? = null
         supportActionBar?.apply {
-            title = user?.name
+            title = "detail user"
             setDisplayHomeAsUpEnabled(true)
         }
 

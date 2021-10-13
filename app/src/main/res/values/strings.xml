@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">github</string>
-    <string name="followers">followers %s</string>
-    <string name="following">following %s</string>
+    <string name="app_name">github user</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_followers">Followers</string>
