@@ -40,6 +40,11 @@ class DetailUserActivity : AppCompatActivity() {
                     tvUsername.text = "@${it.login}"
                     tvFollowers.text = "${it.followers} followers"
                     tvFollowing.text = "${it.following} following"
+                    tvLocation.text = "${it.location}"
+                    tvRepository.text = "${it.public_repos} repository"
+                    tvCompany.text = "${it.company}"
+
+
                     Glide.with(this@DetailUserActivity)
                         .load(it.avatar_url)
                         .transition(DrawableTransitionOptions.withCrossFade())
