@@ -118,7 +118,6 @@
             android:id="@+id/tv_company"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -143,20 +142,6 @@
             app:layout_constraintStart_toStartOf="@id/tv_location"
             app:layout_constraintTop_toBottomOf="@id/tv_followers"
             tools:text="repostori" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout_2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/iv_profile"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.041">
-
 
     </LinearLayout>
 
