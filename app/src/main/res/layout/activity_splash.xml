@@ -8,7 +8,6 @@
     tools:context=".ui.main.splashActivity">
 
     <ImageView
-        android:id="@+id/imgSplash"
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:src="@drawable/ic_github"
