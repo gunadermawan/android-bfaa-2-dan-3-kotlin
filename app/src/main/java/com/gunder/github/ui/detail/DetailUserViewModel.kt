@@ -55,11 +55,12 @@ class DetailUserViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     //    memasukan user ka db favorite
-    fun addToFavorite(username: String, id: Int) {
+    fun addToFavorite(username: String, id: Int, avatarUrl:String) {
         CoroutineScope(Dispatchers.IO).launch {
             var user = FavoriteUser(
                 username,
-                id
+                id,
+                avatarUrl
             )
             userDao?.addToFavorite(user)
         }

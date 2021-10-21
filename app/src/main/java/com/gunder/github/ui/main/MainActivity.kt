@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +13,7 @@ import com.gunder.github.R
 import com.gunder.github.data.model.User
 import com.gunder.github.databinding.ActivityMainBinding
 import com.gunder.github.ui.detail.DetailUserActivity
+import com.gunder.github.ui.favorite.FavoriteActivity
 
 class MainActivity : AppCompatActivity() {
     //    binding
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
                     it.putExtra(DetailUserActivity.EXTRA_ID, data.id)
+                    it.putExtra(DetailUserActivity.EXTRA_URL, data.avatar_url)
                     startActivity(it)
                 }
             }
@@ -86,5 +90,21 @@ class MainActivity : AppCompatActivity() {
             showLoading(true)
             viewModel.setSearch(query)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.favorite_menu -> {
+                Intent(this,FavoriteActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
