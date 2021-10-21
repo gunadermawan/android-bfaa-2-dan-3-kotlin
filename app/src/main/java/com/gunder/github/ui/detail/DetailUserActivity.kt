@@ -3,6 +3,7 @@ package com.gunder.github.ui.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -10,14 +11,21 @@ import com.gunder.github.R
 import com.gunder.github.data.model.DetailUserResponse
 import com.gunder.github.databinding.ActivityDetailUserBinding
 import com.gunder.github.ui.main.UserViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailUserActivity : AppCompatActivity() {
-//    binding
-    private lateinit var binding : ActivityDetailUserBinding
+    //    binding
+    private lateinit var binding: ActivityDetailUserBinding
     private lateinit var viewModel: DetailUserViewModel
+
     companion object {
         const val EXTRA_USERNAME = "extra_username"
+        const val EXTRA_ID = "extra_id"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
@@ -28,13 +36,16 @@ class DetailUserActivity : AppCompatActivity() {
         }
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
+        val id = intent.getIntExtra(EXTRA_ID, 0)
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+        ).get(DetailUserViewModel::class.java)
         viewModel.setUserDetail(username!!)
         viewModel.getUserDetail().observe(this, {
-            if (it != null){
+            if (it != null) {
                 binding.apply {
                     tvName.text = it.name
                     tvUsername.text = "@${it.login}"
@@ -53,6 +64,38 @@ class DetailUserActivity : AppCompatActivity() {
                 }
             }
         })
+
+//        check user favorite
+        var _isChecked = false
+        CoroutineScope(Dispatchers.IO).launch {
+            val count = viewModel.checkUser(id)
+//            set ke thread main/tampilan
+            withContext(Dispatchers.Main) {
+                if (count != null) {
+                    if (count > 0) {
+                        binding.tbFavorite.isChecked = true
+                        _isChecked = true
+                    } else {
+                        binding.tbFavorite.isChecked = false
+                        _isChecked = false
+                    }
+                }
+            }
+        }
+
+//        on toggle clicked
+        binding.tbFavorite.setOnClickListener{
+            _isChecked = !_isChecked
+            if (_isChecked){
+                viewModel.addToFavorite(username, id)
+                Toast.makeText(this, "ditambahkan ke favorite", Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.deleteFromFavorite(id)
+                Toast.makeText(this, "dihapus dari favorite", Toast.LENGTH_SHORT).show()
+            }
+            binding.tbFavorite.isChecked = _isChecked
+        }
+
         val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
             viewPager.adapter = sectionPagerAdapter
