@@ -27,10 +27,8 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class MainActivity : AppCompatActivity() {
     //    binding
     private lateinit var binding: ActivityMainBinding
-
     //    viewModel
     private lateinit var viewModel: UserViewModel
-
     //    adapter recycelerView
     private lateinit var adapter: UserAdapter
 

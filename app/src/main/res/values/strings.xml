@@ -8,4 +8,7 @@
     <string name="favorite">favorite</string>
     <string name="settings">settings</string>
     <string name="dark_theme">Ubah tema aplikasi</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="reminder_notification">Reminder notification</string>
 </resources>
