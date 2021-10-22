@@ -22,6 +22,11 @@ class FavoriteActivity : AppCompatActivity() {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.apply {
+            title = "Favorite User"
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
         viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
@@ -50,7 +55,6 @@ class FavoriteActivity : AppCompatActivity() {
                 adapter.setListUser(list)
             }
         })
-
     }
 
     private fun mapList(users: List<FavoriteUser>): ArrayList<User> {
@@ -67,5 +71,10 @@ class FavoriteActivity : AppCompatActivity() {
         }
         return listUser
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
