@@ -3,14 +3,17 @@ package com.gunder.github.ui.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.gunder.github.R
 import com.gunder.github.databinding.ActivityDetailUserBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import www.sanju.motiontoast.MotionToast
 
 class DetailUserActivity : AppCompatActivity() {
     //    binding
@@ -86,10 +89,24 @@ class DetailUserActivity : AppCompatActivity() {
             _isChecked = !_isChecked
             if (_isChecked) {
                 viewModel.addToFavorite(username, id, avatarUrl!!)
-                Toast.makeText(this, "ditambahkan ke favorite", Toast.LENGTH_SHORT).show()
+                MotionToast.createColorToast(this,
+                    "Yeay! \uD83D\uDE0D",
+                    "User ditambahkan ke favorite",
+                    MotionToast.TOAST_SUCCESS,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this,R.font.helvetica_regular))
+
+
             } else {
                 viewModel.deleteFromFavorite(id)
-                Toast.makeText(this, "dihapus dari favorite", Toast.LENGTH_SHORT).show()
+                MotionToast.createColorToast(this,
+                    "Yah, \uD83D\uDE14",
+                    "User dihapus favorite",
+                    MotionToast.TOAST_ERROR,
+                    MotionToast.GRAVITY_BOTTOM,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this,R.font.helvetica_regular))
             }
             binding.tbFavorite.isChecked = _isChecked
         }

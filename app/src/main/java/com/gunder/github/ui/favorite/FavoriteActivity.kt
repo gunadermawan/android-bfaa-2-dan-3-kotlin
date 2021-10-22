@@ -70,7 +70,6 @@ class FavoriteActivity : AppCompatActivity() {
             listUser.add(userMapped)
         }
         return listUser
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
