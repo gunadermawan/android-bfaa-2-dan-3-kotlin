@@ -12,5 +12,4 @@ data class DetailUserResponse(
     val following: Int,
     val followers: Int,
     val public_repos: Int,
-
 )

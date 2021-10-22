@@ -10,26 +10,30 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Api {
+    companion object {
+        const val KEY = "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"
+    }
+
     @GET("search/users")
-    @Headers("Authorization: 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")
+    @Headers("Authorization: $KEY")
     fun getSearchUsers(
         @Query("q") query: String
     ): Call<UserResponse>
 
     @GET("users/{username}")
-    @Headers("Authorization: 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")
+    @Headers("Authorization: $KEY")
     fun getDetailUser(
         @Path("username") username: String
     ): Call<DetailUserResponse>
 
     @GET("users/{username}/followers")
-    @Headers("Authorization: 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")
+    @Headers("Authorization: $KEY")
     fun getFollowersUser(
         @Path("username") username: String
     ): Call<ArrayList<User>>
 
     @GET("users/{username}/following")
-    @Headers("Authorization: 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")
+    @Headers("Authorization: $KEY")
     fun getFollowingUser(
         @Path("username") username: String
     ): Call<ArrayList<User>>

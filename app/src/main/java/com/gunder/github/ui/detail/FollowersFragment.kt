@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gunder.github.R
-import com.gunder.github.data.model.User
 import com.gunder.github.databinding.FragmentFolloweBinding
 import com.gunder.github.ui.main.UserAdapter
 

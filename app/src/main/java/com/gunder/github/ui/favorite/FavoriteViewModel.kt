@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import com.gunder.github.data.local.FavoriteDao
 import com.gunder.github.data.local.FavoriteUser
 import com.gunder.github.data.local.UserDb
-import com.gunder.github.data.model.User
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
     private var userDao: FavoriteDao? = null

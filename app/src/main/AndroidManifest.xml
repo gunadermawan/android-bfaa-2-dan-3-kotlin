@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Github">
         <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.favorite.FavoriteActivity"
             android:exported="false" />
         <activity
@@ -21,7 +24,7 @@
             android:name=".ui.detail.DetailUserActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.main.splashActivity"
+            android:name=".ui.main.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

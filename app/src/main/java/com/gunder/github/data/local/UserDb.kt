@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase
 )
 abstract class UserDb : RoomDatabase() {
     companion object {
-        var INSTANCE: UserDb? = null
+        private var INSTANCE: UserDb? = null
 
         fun getInstanceDb(context: Context): UserDb? {
             if (INSTANCE == null) {

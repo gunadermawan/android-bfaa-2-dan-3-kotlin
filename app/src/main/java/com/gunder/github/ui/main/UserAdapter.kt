@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
-import com.gunder.github.data.model.DetailUserResponse
 import com.gunder.github.data.model.User
 import com.gunder.github.databinding.ItemUserBinding
 
@@ -14,7 +12,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val listUser = ArrayList<User>()
     private var onItemClickCallBack: OnItemClickCallBack? = null
 
-    fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack){
+    fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack) {
         this.onItemClickCallBack = onItemClickCallBack
     }
 
@@ -24,10 +22,10 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class UserViewHolder(val binding: ItemUserBinding) :
+    inner class UserViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindingUser(user: User) {
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 onItemClickCallBack?.onItemClicked(user)
             }
             binding.apply {
@@ -53,7 +51,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun getItemCount(): Int = listUser.size
 
-    interface OnItemClickCallBack{
+    interface OnItemClickCallBack {
         fun onItemClicked(data: User)
     }
 

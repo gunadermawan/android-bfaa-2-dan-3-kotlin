@@ -3,10 +3,8 @@ package com.gunder.github.ui.favorite
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gunder.github.R
 import com.gunder.github.data.local.FavoriteUser
 import com.gunder.github.data.model.User
 import com.gunder.github.databinding.ActivityFavoriteBinding

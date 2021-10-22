@@ -1,16 +1,12 @@
 package com.gunder.github.ui.detail
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.gunder.github.R
-import com.gunder.github.data.model.DetailUserResponse
 import com.gunder.github.databinding.ActivityDetailUserBinding
-import com.gunder.github.ui.main.UserViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -86,9 +82,9 @@ class DetailUserActivity : AppCompatActivity() {
         }
 
 //        on toggle clicked
-        binding.tbFavorite.setOnClickListener{
+        binding.tbFavorite.setOnClickListener {
             _isChecked = !_isChecked
-            if (_isChecked){
+            if (_isChecked) {
                 viewModel.addToFavorite(username, id, avatarUrl!!)
                 Toast.makeText(this, "ditambahkan ke favorite", Toast.LENGTH_SHORT).show()
             } else {

@@ -5,13 +5,11 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.gunder.github.api.RetrofitClient
 import com.gunder.github.data.local.FavoriteDao
 import com.gunder.github.data.local.FavoriteUser
 import com.gunder.github.data.local.UserDb
 import com.gunder.github.data.model.DetailUserResponse
-import com.gunder.github.data.model.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,9 +53,9 @@ class DetailUserViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     //    memasukan user ka db favorite
-    fun addToFavorite(username: String, id: Int, avatarUrl:String) {
+    fun addToFavorite(username: String, id: Int, avatarUrl: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            var user = FavoriteUser(
+            val user = FavoriteUser(
                 username,
                 id,
                 avatarUrl

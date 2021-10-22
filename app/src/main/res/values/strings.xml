@@ -6,4 +6,6 @@
     <string name="username">at %s</string>
     <string name="cari_disini">cari disini...</string>
     <string name="favorite">favorite</string>
+    <string name="settings">settings</string>
+    <string name="dark_theme">Ubah tema aplikasi</string>
 </resources>
