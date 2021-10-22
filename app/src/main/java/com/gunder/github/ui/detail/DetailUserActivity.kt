@@ -97,8 +97,6 @@ class DetailUserActivity : AppCompatActivity() {
                     MotionToast.LONG_DURATION,
                     ResourcesCompat.getFont(this, R.font.helvetica_regular)
                 )
-
-
             } else {
                 viewModel.deleteFromFavorite(id)
                 MotionToast.createColorToast(

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">github user</string>
+    <string name="app_name">github</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="tab_followers">Followers</string>
     <string name="tab_following">Following</string>
