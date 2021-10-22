@@ -2,7 +2,6 @@ package com.gunder.github.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -89,24 +88,28 @@ class DetailUserActivity : AppCompatActivity() {
             _isChecked = !_isChecked
             if (_isChecked) {
                 viewModel.addToFavorite(username, id, avatarUrl!!)
-                MotionToast.createColorToast(this,
+                MotionToast.createColorToast(
+                    this,
                     "Yeay! \uD83D\uDE0D",
                     "User ditambahkan ke favorite",
                     MotionToast.TOAST_SUCCESS,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
-                    ResourcesCompat.getFont(this,R.font.helvetica_regular))
+                    ResourcesCompat.getFont(this, R.font.helvetica_regular)
+                )
 
 
             } else {
                 viewModel.deleteFromFavorite(id)
-                MotionToast.createColorToast(this,
+                MotionToast.createColorToast(
+                    this,
                     "Yah, \uD83D\uDE14",
                     "User dihapus favorite",
                     MotionToast.TOAST_ERROR,
                     MotionToast.GRAVITY_BOTTOM,
                     MotionToast.LONG_DURATION,
-                    ResourcesCompat.getFont(this,R.font.helvetica_regular))
+                    ResourcesCompat.getFont(this, R.font.helvetica_regular)
+                )
             }
             binding.tbFavorite.isChecked = _isChecked
         }
