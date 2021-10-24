@@ -27,7 +27,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -72,7 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
-            android:textColor="@color/black"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_person"
             app:layout_constraintEnd_toEndOf="@+id/tv_followers"
@@ -86,7 +84,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical"
-            android:textColor="@color/black"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_people"
             app:layout_constraintEnd_toEndOf="@+id/tv_username"
@@ -102,7 +99,6 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:textColor="@color/black"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_location"
             app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
@@ -118,7 +114,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textColor="@color/black"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_company"
             app:layout_constraintEnd_toEndOf="@id/tv_repository"
@@ -133,7 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical"
-            android:textColor="@color/black"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_repostirory"
             app:layout_constraintEnd_toEndOf="@id/tv_location"
@@ -155,8 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:tabTextColor="@color/black" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -171,18 +164,22 @@
 
     <ToggleButton
         android:id="@+id/tb_favorite"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/favorite_toogle"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:textOff=""
         android:textOn=""
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
